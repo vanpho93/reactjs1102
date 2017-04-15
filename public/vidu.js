@@ -3,8 +3,10 @@ const React = React;
 //stateless component ::: functional component
 const Note = (props) => (
     <div>
-        <h3>{props.subject}</h3>
-        <p>{props.content}</p>
+        <h3 className="red">{props.subject}</h3>
+        <input type="text" defaultValue="Xin chao" />
+        <p style={{ color: 'green' }}>{props.content}</p>
+        <button onClick={() => console.log(props.subject)}>LOG</button>
     </div>
 );
 
