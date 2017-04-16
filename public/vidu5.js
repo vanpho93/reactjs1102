@@ -4,7 +4,7 @@ class BoxControl extends React.Component {
     onAdd() {
         // const { parent } = this.props;
         // parent.setState({ value: parent.state.value + 1 });
-        this.props.onAdd();
+        this.props.onClickAdd();
     }
     render() {
         return (
@@ -27,7 +27,7 @@ class Box extends React.Component {
         return (
             <div>
                 <p>{this.state.value}</p>
-                <BoxControl onAdd={this.add.bind(this)} />
+                <BoxControl onClickAdd={this.add.bind(this)} />
             </div>
         );
     }
