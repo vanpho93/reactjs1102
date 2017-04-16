@@ -2,7 +2,9 @@ const React = React;
 
 class BoxControl extends React.Component {
     onAdd() {
-
+        // const { parent } = this.props;
+        // parent.setState({ value: parent.state.value + 1 });
+        this.props.onAdd();
     }
     render() {
         return (
@@ -17,11 +19,15 @@ class Box extends React.Component {
         this.state = { value: 0 };
     }
 
+    add() {
+        this.setState({ value: this.state.value + 1 });
+    }
+
     render() {
         return (
             <div>
                 <p>{this.state.value}</p>
-                <BoxControl />
+                <BoxControl onAdd={this.add.bind(this)} />
             </div>
         );
     }
