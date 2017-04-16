@@ -15,16 +15,31 @@ const arrNoteModel = [
 
 const Note = (props) => (
     <div>
-        <h3 className="red">{props.subject}</h3>
-        <p style={{ color: 'green' }}>{props.content}</p>
+        <h3 className="red">{props.note.subject}</h3>
+        <p style={{ color: 'green' }}>{props.note.content}</p>
     </div>
 );
 
 class List extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { arrNote: arrNoteModel };
+    }
+
+    add() {
+        const { txtSubject, txtContent } = this.refs;
+        const note = new NoteModel(txtSubject.value, txtContent.value);
+        this.setState({ arrNote: this.state.arrNote.concat(note) });
+    }
+
     render() {
+        const { arrNote } = this.state;
         return (
             <div>
-                {arrNoteModel.map(e => <Note key={e.content} note={e} />)}
+                {arrNote.map(e => <Note key={e.content} note={e} />)}
+                <input type="text" ref="txtSubject" placeholder="Enter your subject" />
+                <input type="text" ref="txtContent" placeholder="Enter your content" />
+                <button onClick={this.add.bind(this)}>Add</button>
             </div>
         );
     }
